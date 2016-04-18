@@ -1,0 +1,32 @@
+{% extends 'base.html' %} <!-- extends the mother template-->
+
+
+{% block content %}
+<div class="row">
+    <div class="column-8">
+        <table>
+            <thead>
+	            <tr>
+                    <th>Book</th>
+		            <th>Pages</th>
+		            <th>Price</th>
+		            <th>Authors</th>
+		            <th>Read</th>
+                </tr>
+            </thead>
+	        <tbody>
+	        {% for book in object_list %}
+		        <tr>
+		            <td><a href="{% url 'book-update' book.pk %}">{{ book.title }}</a></td>
+			        <td>{{ book.num_pages }}</td>
+			        <td>{{ book.price }}</td>
+			        <td>{%  for author in book.authors.all %}{{ author.name }},{% endfor %}</td>
+			        <td>{% if book.is_read %}Yes{% else %}No{% endif %}</td>
+			        <td><a class="alert button small" href="{% url 'book-delete' book.pk  %}">Delete</a></td>
+		        </tr>
+		    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

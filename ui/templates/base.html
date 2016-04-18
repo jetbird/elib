@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+  <head>
+  {% block css%}
+  <link rel="stylesheet" type="text/css" href="{% static "ui/foundation-6/css/foundation.min.css" %}">
+  {% endblock %} <!-- keep the css in a block-->
+  </head>
+
+{% block navbar %}
+<div class="row">
+  <div class="column-12">    
+    <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+     <button class="menu-icon" type="button" data-toggle></button>
+     <div class="title-bar-title">Menu</div>
+    </div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Elib</li>
+      <li class="has-submenu">
+        <a href="#">Books</a>
+        <ul class="submenu menu vertical" data-submenu>
+            <li><a href="">Pending</a></li>
+            <li><a href="">Read</a></li>
+            <li><a href="">All</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="#">Operations</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="{% url 'add-book' %}">Add Book</a></li>  
+          <li><a href="">Upload Books</a></li>
+          <li><a href="{% url 'book-exporter' %}">Export Books</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'book-list' %}">Home</a></li>
+      <li><a href="">Profile</a></li>
+      <li><a href="{% url 'about-page' %}">About</a></li>
+    </ul>
+  </div>
+
+  <form action="" method="GET">
+   <div class="top-bar-right">
+    <ul class="menu">  
+      <li><input type="search" placeholder="Search" name="q" value=""></li>
+      <li><button type="submit" class="button">Search</button></li>
+	  <!--{% if user.is_authenticated %}-->
+        <li><a href="" class="button">Logout</a></li>
+		<!-- {% endif %}-->
+    </ul>
+   </div> <!-- close top-bar-right -->
+  </form>
+</div> <!-- close the column-12 large -->
+</div> <!-- close the row -->
+</div>
+{% endblock %} <!-- keep the navbar in a block-->
+
+<br>
+
+{% block content%}
+{% endblock %} <!-- will be overridden by child templates-->
+
+<br>
+
+{% block footer %}
+<footer>
+  <div class="row">
+    <div class="column-12 large">
+      Elib-Electronic Library
+    </div>
+  </div> <!-- close the row for the footer-->
+</footer>
+{% endblock %} <!-- keep the footer in a block -->
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'ui/foundation-6/js/vendor/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ui/foundation-6/js/foundation.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'ui/foundation-6/js/app.js'%}"></script>
+{% endblock %} <!-- keep javascript at the bottom -->
+
+</html>

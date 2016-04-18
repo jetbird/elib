@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="large-4" columns>
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+	        <input type="submit" value="Add" class="button small">
+	        <a href="{% url 'book-list' %}" class="button small">Cancel</a>
+        </form>
+    </div>
+</div>  
+{% endblock %}

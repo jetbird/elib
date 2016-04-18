@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="large-4 columns">
+    <form action="" method="POST">{% csrf_token %}
+      <p>Are you sure you want to delete {{ object }}?</p>
+      <input type="submit" class="button small" value="Confirm">
+      <a href="{% url 'book-list'%}" class="button small">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
